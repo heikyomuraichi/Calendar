@@ -16,16 +16,16 @@ function App() {
   const handleDateClick = useCallback((arg : DateClickArg) => {
     alert(arg.dateStr);
   },[]);
+  let events = [{ title: "event 1", date: `${thisMonth()}-01`},{ title: "event 2", date:`${thisMonth()}-02`}]
+  events = events.concat({ title: "event 3", date: `${thisMonth()}-01`});
+
   return (
     <div>
         <FullCalendar plugins={[dayGridPlugin, interactionPlugin]} 
           initialView="dayGridMonth"
           locales={allLocales}
           locale="ja"
-          events={[
-            { title: "event 1", date: `${thisMonth()}-01` },
-            { title: "event 2", date: `${thisMonth()}-02` },
-          ]}
+          events={events}
           dateClick={handleDateClick}
         />
     </div>
@@ -33,3 +33,5 @@ function App() {
 }
 
 export default App;
+
+
